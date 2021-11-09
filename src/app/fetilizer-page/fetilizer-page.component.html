@@ -1,0 +1,39 @@
+
+<app-not-found [visible]="!fetilizers" notFoundMessage="Product Not Found!"
+resetLinkText="Back To Homepage"></app-not-found>
+
+<div class="container">
+    <img [src]="fetilizers.imageUrl" [alt]="fetilizers.name" />
+    <div class="details">
+        <div class="header">
+            <span class="name">
+                {{fetilizers.name}}
+            </span>
+            <span class="favorite {{fetilizers.favorite?'':'not'}}">
+                ❤
+            </span>
+        </div>
+        <div class="rating">
+            <star-rating [value]="fetilizers.stars" [totalstars]="5" checkedcolor="red" uncheckedcolor="black" size="30px"
+                [readonly]="true">
+            </star-rating>
+        </div>
+        <div class="origins">
+            <span *ngFor="let origin of fetilizers.origins">
+                {{origin}}
+            </span>
+        </div>
+    <div class="tags">
+        <app-tags  [fetilizersPageTags]="fetilizers.tags" justifyContent = "start"></app-tags>
+</div>
+        <div class="cook-time">
+            <span>
+                About Stock: <strong>{{fetilizers.cookTime}}</strong> Qty/KG's
+            </span>
+        </div>
+
+        <div class="price">
+            <span>{{fetilizers.price |currency:'INR ₹'}}</span>
+        </div>
+        <button (click)='addToCart()'>Add To Cart</button>
+</div>
